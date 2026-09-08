@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 // import routes
 const customerRoutes = require("./routes/customer.routes");
 
+const cookieParser = require("cookie-parser");
+
 require("dotenv").config();
 
 
@@ -16,6 +18,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cookieParser());
 
 // Routes
 app.use("/customers", customerRoutes);
@@ -31,7 +34,7 @@ mongoose
         console.error("MongoDB connection failed:", error);
     });
 
-
+// 
 // Test Route
 app.get("/", (req, res) => {
     res.json({
