@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-// schema: what the document (collection) will look like in DB
+// schema: what the document (collection) will look like in Database
 const customerSchema = new mongoose.Schema({
     fullName: {
         type: String,
