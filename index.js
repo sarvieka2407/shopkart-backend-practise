@@ -1,6 +1,12 @@
 // import required modules 
 const express = require("express"); // express frameowrk ~~ fastapi
+
+
 const mongoose = require("mongoose");
+
+// import routes
+const customerRoutes = require("./routes/customer.routes");
+
 require("dotenv").config();
 
 
@@ -10,6 +16,9 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+
+// Routes
+app.use("/customers", customerRoutes);
 
 
 // MongoDB Connection
