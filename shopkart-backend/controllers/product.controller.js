@@ -40,7 +40,22 @@ const createProduct = async (req, res) => {
 // Get all products
 const getProducts = async (req, res) => {
     try {
-        const products = await Product.find().select(
+        const { search, category } = req.query;
+
+        const query = {};
+
+        if (search) {
+            query.name = {
+                $regex: search,
+                $options: "i"
+            };
+        }
+
+        if (category) {
+            query.category = category;
+        }
+
+        const products = await Product.find(query).select(
             "name price category image stock"
         );
 
